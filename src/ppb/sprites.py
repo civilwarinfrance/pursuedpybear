@@ -445,7 +445,8 @@ class RectangleSprite(RectangleShapeMixin, RenderableMixin, RotatableMixin, Base
 
     def __image__(self):
         image = super().__image__()
-        # Override the dimensions of the ``Image`` so that the missing shape
-        # matches this sprite's dimensions.
-        image._file_missing_dimensions = (self.width, self.height)
+        if image is not None:
+            # Override the dimensions of the ``Image`` so that the missing shape
+            # matches this sprite's dimensions.
+            image._file_missing_dimensions = (self.width, self.height)
         return image
